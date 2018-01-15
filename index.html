@@ -26,9 +26,9 @@
 <body>
     <div class="tippage">
         <!-- <img src="data:image/jpg;base64,$imageData" alt=""> -->
-        <img src="../tip.png" alt="">
+        <img src="./tip.png" alt="">
     </div>
-    <script src="../jquery-1.11.1.min.js"></script>
+    <script src="./jquery-1.11.1.min.js"></script>
     <script>
         if (!!navigator.userAgent.match(/AppleWebKit.*Mobile.*/)||!!navigator.userAgent.match(/AppleWebKit/)) { 
         //判断是否是移动设备打开。browser代码在下面
@@ -46,14 +46,16 @@
             window.location.href="apk下载路劲";
        }
        function iosclick(){
-            var name=window.location.href;
+           var name=window.location.href;
             //字符串截取
-            var start=name.indexOf("NIApp/")+6;
-            name=name.substring(start,name.length);
-            if(name.indexOf("/")>=0){
-                name=name.substring(0,name.indexOf("/"));
-            }
-            window.location.href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/luoruowen/NIApp/gh-pages/"+name+"/install.plist";
+           if(name.indexOf("?")>=0){
+                var start=name.indexOf("?")+1;
+                name=name.substring(start,name.length);
+                if(name.indexOf("&")>=0){
+                    name=name.substring(0,name.indexOf("&"));
+                }
+                window.location.href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/luoruowen/JGIT/gh-pages/"+name+"/install.plist";
+           }
        }
     </script>
 </body>
